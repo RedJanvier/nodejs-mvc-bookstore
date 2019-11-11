@@ -1,0 +1,39 @@
+<div class="body grey darken-3">
+    <section class="row hero">     
+        <nav>
+            <div class="nav-wrapper grey darken-3">
+                <div class="container">
+                    <a href="#" class="brand-logo">Book Store</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/dashboard" class="right"><i class="material-icons left">house</i>Home</a></li>
+                        <li><a href="#" class="right"><i class="material-icons left">person</i>Profile</a></li>
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <button class="btn-flat grey darken-3 white-text" type="submit">logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>Welcome to the Store... HAVE FUN!!</h1>
+    </section>
+    
+    <div class="container white z-depth-3">
+        <section class="row users-list">
+            <table>
+                <thead>
+                    <td>#</td>
+                    <td>username</td>
+                    <td>gender</td>
+                    <td>age</td>
+                    <td>email</td>
+                    <td>del</td>
+                </thead>
+                <tbody>
+                    <% include ./partials/users %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

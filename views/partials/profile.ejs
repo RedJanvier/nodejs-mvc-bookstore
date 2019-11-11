@@ -1,0 +1,9 @@
+<% if (typeof user != 'undefined'){ %>
+    <span class="profile left">
+        <h5><%= user.name.charAt(0) %></h5>
+    </span>
+<% } else { %>
+    <span class="profile left">
+        <i class="material-icons">person</i>
+    </span>
+<% } %>

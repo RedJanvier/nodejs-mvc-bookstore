@@ -1,0 +1,12 @@
+<% if (typeof users != 'undefined'){ %>
+    <% users.forEach((user, i) => { %>
+        <tr>
+            <td><%= i+1 %></td>
+            <td><%= user.name %></td>
+            <td><%= user.gender %></td>
+            <td><%= user.age %></td>
+            <td><%= user.email %></td>
+            <td><i class="material-icons red-text">delete</i></td>
+        </tr>
+    <% }); %>
+<% } %>

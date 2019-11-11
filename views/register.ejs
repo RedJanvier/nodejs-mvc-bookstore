@@ -1,0 +1,91 @@
+<div class="background-img">
+    <img
+    src="https://images2.minutemediacdn.com/image/upload/c_crop,h_2146,w_3819,x_0,y_200/f_auto,q_auto,w_1100/v1565275119/shape/mentalfloss/gettyimages-938171020.jpg" 
+    alt="registeration-background-image" />
+</div>
+<ul class="errors">
+    <% include ./partials/messages.ejs %>
+</ul>
+<div class="container register global grey-text text-darken-4">
+    <div class="content">
+        <h1>Book Store Registration</h1>
+        <div class="action">               
+            <div class="row">
+                <form class="col s12" method="POST" action="/users/register">
+                    <div class="row">
+                        <div style="margin: 0;" class="input-field col s6">
+                            <input id="firstname" 
+                            name="firstname" 
+                            value="<%= typeof firstname != 'undefined'? firstname: '' %>"
+                            type="text" class="validate"/>
+                            <label for="firstname">First Name</label>
+                        </div>
+                        <div style="margin: 0;" class="input-field col s6">
+                            <input id="lastname"  
+                            name="lastname"
+                            value="<%= typeof lastname != 'undefined'? lastname: '' %>"
+                            type="text" class="validate"/>
+                            <label for="lastname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div style="margin: 0;" class="input-field col s6">
+                                <input id="age" 
+                                name="age" placeholder="Age"
+                                value="<%= typeof age != 'undefined'? age: '' %>"
+                                type="number" class="validate"/>
+                            </div>
+                            <div style="margin: 0;" class="input-field col s6">
+                                <p style="margin: 0;">
+                                    <label>
+                                        <input 
+                                        name="gender" 
+                                        type="radio" value="male" checked />
+                                        <span>Male</span>
+                                    </label>
+                                </p>
+                                <p style="margin: 0;">
+                                    <label>
+                                        <input 
+                                        name="gender" 
+                                        type="radio" value="female"/>
+                                        <span>Female</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin: 0;" class="input-field col s12">
+                            <input id="email" 
+                            name="email"
+                            value="<%= typeof email != 'undefined'? email: '' %>"
+                            type="email" class="validate"/>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin: 0;" class="input-field col s12">
+                            <input id="password" 
+                            name="password" 
+                            type="password" class="validate"/>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button 
+                            type="submit" class="btn btn-flat white-text teal" style="margin: 0 auto;">Register</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            Already have an account? <a href="/users/login" class="orange-text">Login Here...</a>
+                        </div>
+                    </div>
+                </form>
+            </div>    
+        </div>          
+    </div>
+</div>
