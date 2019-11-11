@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const validate = require('../utils/validate');
-const { db, usersTable } = require('../config/dbConfig');
+const { db, usersTable } = require('../config/database');
 // REGISTER HANDLERS
 exports.render_register = (req, res, next) => res.render('register');
 exports.register = (req, res, next) => {

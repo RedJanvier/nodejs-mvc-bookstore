@@ -1,4 +1,4 @@
-const { db, usersTable } = require('../config/dbConfig');
+const { db, usersTable } = require('../config/database');
 
 const get = (req, res, next) => { 
     setTimeout(() => {
