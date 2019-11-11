@@ -19,7 +19,7 @@ const validateRegister = ({ firstname, lastname, age, gender, email, password })
     }
 
     if (age < 6){
-        errors.push({ msg: "Enter a valid age." });
+        errors.push({ msg: 'Wrong Email or Password!' });
     }
 
     // if (emailRegex.test(email) !== true){
@@ -43,10 +43,10 @@ const validateLogin = ({ email, password }) => {
 }
 
 // REGISTER HANDLERS
-exports.handle_register_get = (req, res, next) => res.render('register');
-exports.handle_register_post = (req, res, next) => {
+exports.render_register = (req, res, next) => res.render('register');
+exports.register = (req, res, next) => {
     const { firstname, lastname, age, gender, email, password } = req.body;
-    const fullname = `${capitalize(firstname)} ${capitalize(lastname)}`;
+    const fullname = `${firstname} ${lastname}`;
     const errors = validateRegister(req.body);
 
     if (errors.length){
@@ -61,8 +61,7 @@ exports.handle_register_post = (req, res, next) => {
                     age, 
                     gender
                 })
-                .returning('*')
-                .then(user => {
+                .then(() => {
                     res.render('login', { success: [{ msg: 'You are now registered and can log in' }] });
                 })
                 .catch(err => {
@@ -75,26 +74,27 @@ exports.handle_register_post = (req, res, next) => {
 };
 
 // LOGIN HANDLERS
-exports.handle_login_get = (req, res, next) => res.render('Login');
-exports.handle_login_post = (req, res, next) => {
-    const { email, password } = req.body;
+exports.render_login = (req, res, next) => res.render('Login');
+exports.login = (req, res, next) => {
     const errors = validateLogin(req.body);
     if(errors.length){
         res.render('login', { errors, ...req.body });
     } else {
+        const { email, password } = req.body;
         db(usersTable).select('*')
-            .where('email', '=', email)
-            .returning('*')
+            .where({ email })
             .then(user => {
                 if(user.length < 1) {
-                    res.render('login', { errors: [{ msg: 'Wrong Email or Password!'}], ...req.body });
+                    errors.push({ msg: 'Wrong Email or Password!' });
+                    return res.render('login', { errors, ...req.body });
                 }
-                if(bcrypt.compareSync(password, user[0].password)){
+                if (bcrypt.compareSync(password, user[0].password)){
                     res.locals.user = user[0];
                     req.session.userId = user[0].id;
-                    res.redirect('/dashboard');
+                    return res.redirect('/dashboard');
                 } else {
-                    res.render('login', { errors: [{ msg: 'Wrong Email or Password!'}], ...req.body });
+                    errors.push({ msg: 'Wrong Email or Password!' });
+                    res.render('login', { errors, ...req.body });
                 }
             })
             .catch(err => {

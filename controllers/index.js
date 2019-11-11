@@ -2,7 +2,9 @@ const db = require('../config/dbConfig').db;
 const usersTable = require('../config/dbConfig').tableName.users;
 
 const get = (req, res, next) => { 
-    res.render('dashboard', { users: res.locals.users });
+    setTimeout(() => {
+        res.render('dashboard', { users: res.locals.users });
+    } , 100);
 };
 
 const addUsers = (req, res, next) => {

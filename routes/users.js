@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const checkAuth = require('../config/check-auth');
-
-// CONTROLLERS
-const usersController = require('../controllers/users');
+const user = require('../controllers/users');
+const { redirectDashboard, redirectLogin } = require('../config/check-auth');
 
 // REGISTER ROUTES
-router.get('/register', checkAuth.redirectDashboard, usersController.handle_register_get);
-router.post('/register', checkAuth.redirectDashboard, usersController.handle_register_post);
+router.get('/register', redirectDashboard, user.render_register);
+router.post('/register', redirectDashboard, user.register);
 
 // LOGIN ROUTES
-router.get('/login', checkAuth.redirectDashboard, usersController.handle_login_get);
-router.post('/login', checkAuth.redirectDashboard, usersController.handle_login_post);
+router.get('/login', redirectDashboard, user.render_login);
+router.post('/login', redirectDashboard, user.login);
 // LOGOUT 
-router.post('/logout', checkAuth.redirectLogin, usersController.handle_logout_post);
+router.post('/logout', redirectLogin, user.handle_logout_post);
 
 
 module.exports = router;
