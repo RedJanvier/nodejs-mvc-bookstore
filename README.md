@@ -1,4 +1,5 @@
 # LOGIN SYSTEM BY redjanvier
+[![DeepScan grade](https://deepscan.io/api/teams/6051/projects/7919/branches/88156/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6051&pid=7919&bid=88156)
 
 ## PREREQUISITES
 - NodeJs installed. (find it)[https://nodejs.org/en/]
