@@ -1,53 +1,12 @@
-// DATABASE 
-const db = require('../config/dbConfig').db;
-const usersTable = require('../config/dbConfig').tableName.users;
-
 const bcrypt = require('bcrypt');
-  
-// EXTRAS
-const capitalize = (str) => str.trim().charAt(0).toUpperCase() + str.trim().slice(1); 
-const validateRegister = ({ firstname, lastname, age, gender, email, password }) => {
-    let errors = [];
-    // const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/gim;
-
-    if (!firstname || !lastname || !age || !gender || !email || !password){
-        errors.push({ msg: "Fill in all the fields please!" });
-    }
-
-    if (password.length < 8){
-        errors.push({ msg: "Password is too short." });
-    }
-
-    if (age < 6){
-        errors.push({ msg: 'Wrong Email or Password!' });
-    }
-
-    // if (emailRegex.test(email) !== true){
-    //     errors.push({ msg: "Enter a valid Email please!" });
-    // }
-
-    return errors;
-}
-const validateLogin = ({ email, password }) => {
-    let errors = [];
-
-    if (!email || !password){
-        errors.push({ msg: "Fill in all the fields please!" });
-    }
-
-    if (password.length < 8){
-        errors.push({ msg: "Password is too short." });
-    }
-    
-    return errors;
-}
-
+const validate = require('../utils/validate');
+const { db, usersTable } = require('../config/dbConfig');
 // REGISTER HANDLERS
 exports.render_register = (req, res, next) => res.render('register');
 exports.register = (req, res, next) => {
     const { firstname, lastname, age, gender, email, password } = req.body;
     const fullname = `${firstname} ${lastname}`;
-    const errors = validateRegister(req.body);
+    const errors = validate.register(req.body);
 
     if (errors.length){
         res.render('register', { errors, ...req.body });
@@ -76,7 +35,7 @@ exports.register = (req, res, next) => {
 // LOGIN HANDLERS
 exports.render_login = (req, res, next) => res.render('Login');
 exports.login = (req, res, next) => {
-    const errors = validateLogin(req.body);
+    const errors = validate.login(req.body);
     if(errors.length){
         res.render('login', { errors, ...req.body });
     } else {
@@ -104,7 +63,7 @@ exports.login = (req, res, next) => {
     }
 };
 // LOGOUT
-exports.handle_logout_post = (req, res, next) => {
+exports.logout= (req, res, next) => {
     req.session.destroy(err => {
         if(err){
             return res.redirect('/dashboard');

@@ -11,7 +11,7 @@ router.post('/register', redirectDashboard, user.register);
 router.get('/login', redirectDashboard, user.render_login);
 router.post('/login', redirectDashboard, user.login);
 // LOGOUT 
-router.post('/logout', redirectLogin, user.handle_logout_post);
+router.post('/logout', redirectLogin, user.logout);
 
 
 module.exports = router;
