@@ -1,23 +1,72 @@
-const { db, usersTable } = require('../config/database');
+const { db, usersTable, booksTable } = require('../config/database');
 
-const get = (req, res, next) => { 
-    setTimeout(() => {
-        res.render('dashboard', { users: res.locals.users });
-    } , 100);
-};
-
-const addUsers = (req, res, next) => {
+const dashboard = (req, res, next) => { 
     const { userId } = req.session;
     if (userId) {
         db(usersTable)
             .select('email', 'age', 'gender', 'name', 'id')
-            .then(users => res.locals.users = users)
+            .then(users => res.render('dashboard', { users }))
             .catch(console.log);
-        }
-    next();
+    }
 };
 
+const index = (req, res, next) => { 
+    // const { userId } = req.session;
+    // if (userId) {
+
+        // db(booksTable)
+        // .select('title', 'summary', 'img', )
+        // .then(books => res.render('welcome', { books }))
+        // .catch(console.log);
+
+        res.render('welcome', { books: [
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            },
+            { 
+                title: 'John Doe in the jungle', 
+                summary: 'Lorem ipsum dolor ipudh smen unaieaaamldn uanepaneb dna,d  naje an anaiajne ajnejnajna a;wmef', 
+                img: 'https://m.media-amazon.com/images/M/MV5BMjRjNDk2NTItZGQ1OS00OGU0LWJhMzUtNmZkNDE4NDg0MDMyXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_UY1200_CR84,0,630,1200_AL_.jpg' 
+            }
+        ] 
+        });
+    // }
+};
+
+
 module.exports = {
-    get,
-    addUsers
+    dashboard,
+    index
 };

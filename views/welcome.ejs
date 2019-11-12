@@ -7,12 +7,31 @@
     <div class="content">
         <h1>Welcome to our Book Store</h1>
         <p>This is the only Book Store you need because it contains all the books 
-        you might need and presented in the most adequate way as you love. </br>
-        <span>Get more than 50,000+ books all in one package.</span></br>
-        Over <strong>20,000+ free</strong> Now available in the store...</p>
-        <div class="action container">
-            <a href="/users/register" class="btn btn-flat white-text teal darken-2">Register</button>
-            <a href="/users/login" class="btn btn-flat white-text orange darken-2">Login</a>
-        </div>
+        you might need and presented in the most adequate way as you love.
+        Get more than 50,000+ books all in one package.</br>
+    <div class="action">
+        <a href="/users/register" class="btn btn-flat white-text teal darken-2">Register</a>
+        <a href="/users/login" class="btn btn-flat white-text orange darken-2">Login</a>
     </div>
 </div>
+<% if (typeof books != 'undefined' && books.length > 0){ %>
+    <div class="books">
+        <% books.forEach(book => {%>
+            <div class="col s12 book">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src=<%= book.img %> style="max-width: 120px;">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p><%= book.summary %></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+<% } %>
