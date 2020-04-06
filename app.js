@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 
 const app = express();
+const PORT = process.env.PORT || 4000;
 
 // SESSION & FLASH_MSG
 app.use(session({
@@ -29,4 +31,4 @@ app.use(express.static('./public'));
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
-module.exports = app;
+app.listen(PORT, console.log(`Server started at http://localhost:${PORT}/`));

@@ -2,10 +2,10 @@
   "name": "node-mvc-bookstore",
   "version": "2.0.0",
   "description": "A complete bookstore app inspired by Alain Niyonema where you can publish your book and sell the or even buy a book",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "keywords": [],
   "author": "redjanvier",
