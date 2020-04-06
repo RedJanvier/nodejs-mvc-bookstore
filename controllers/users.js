@@ -2,8 +2,8 @@ const bcrypt = require('bcrypt');
 const validate = require('../utils/validate');
 const { db, usersTable } = require('../config/database');
 // REGISTER HANDLERS
-exports.render_register = (req, res, next) => res.render('register');
-exports.register = (req, res, next) => {
+exports.render_register = (req, res) => res.render('register');
+exports.register = (req, res) => {
   const { firstname, lastname, age, gender, email, password } = req.body;
   const fullname = `${firstname} ${lastname}`;
   const errors = validate.register(req.body);
@@ -26,8 +26,8 @@ exports.register = (req, res, next) => {
               success: [{ msg: 'You are now registered and can log in' }],
             });
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            console.log(error);
             res.render('register', {
               errors: [{ msg: 'Unable to create user!' }],
               ...req.body,
@@ -39,8 +39,8 @@ exports.register = (req, res, next) => {
 };
 
 // LOGIN HANDLERS
-exports.render_login = (req, res, next) => res.render('Login');
-exports.login = (req, res, next) => {
+exports.render_login = (req, res) => res.render('Login');
+exports.login = (req, res) => {
   const errors = validate.login(req.body);
   if (errors.length) {
     res.render('login', { errors, ...req.body });
@@ -55,13 +55,13 @@ exports.login = (req, res, next) => {
           return res.render('login', { errors, ...req.body });
         }
         if (bcrypt.compareSync(password, user[0].password)) {
-          res.locals.user = user[0];
+          const [usr] = user;
+          res.locals.user = usr;
           req.session.userId = user[0].id;
           return res.redirect('/dashboard');
-        } else {
-          errors.push({ msg: 'Wrong Email or Password!' });
-          res.render('login', { errors, ...req.body });
         }
+        errors.push({ msg: 'Wrong Email or Password!' });
+        return res.render('login', { errors, ...req.body });
       })
       .catch((err) => {
         console.log(err);
@@ -73,7 +73,7 @@ exports.login = (req, res, next) => {
   }
 };
 // LOGOUT
-exports.logout = (req, res, next) => {
+exports.logout = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return res.redirect('/dashboard');

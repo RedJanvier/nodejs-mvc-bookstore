@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const user = require('../controllers/users');
 const { redirectDashboard, redirectLogin } = require('../config/check-auth');
+
+const router = express.Router();
 
 // REGISTER ROUTES
 router.get('/register', redirectDashboard, user.render_register);

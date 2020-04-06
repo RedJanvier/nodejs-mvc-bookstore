@@ -1,6 +1,6 @@
 const { db, usersTable, booksTable } = require('../config/database');
 
-const dashboard = (req, res, next) => {
+const dashboard = (req, res) => {
   const { userId } = req.session;
   if (userId) {
     db(usersTable)
@@ -10,7 +10,7 @@ const dashboard = (req, res, next) => {
   }
 };
 
-const index = (req, res, next) => {
+const index = (req, res) => {
   const { userId } = req.session;
   if (userId) {
     db(booksTable)

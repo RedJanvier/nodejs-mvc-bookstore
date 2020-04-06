@@ -22,6 +22,7 @@ app.use(
 
 // EJS
 app.use(require('express-ejs-layouts'));
+
 app.set('view engine', 'ejs');
 
 // BODY PARSER

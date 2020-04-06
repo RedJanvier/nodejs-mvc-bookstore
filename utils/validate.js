@@ -1,6 +1,6 @@
 // EXTRAS
 const register = ({ firstname, lastname, age, gender, email, password }) => {
-  let errors = [];
+  const errors = [];
   // const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/gim;
 
   if (!firstname || !lastname || !age || !gender || !email || !password) {
@@ -22,7 +22,7 @@ const register = ({ firstname, lastname, age, gender, email, password }) => {
   return errors;
 };
 const login = ({ email, password }) => {
-  let errors = [];
+  const errors = [];
 
   if (!email || !password) {
     errors.push({ msg: 'Fill in all the fields please!' });
