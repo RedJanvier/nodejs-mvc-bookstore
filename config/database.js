@@ -1,11 +1,8 @@
 
-const db = require('knex')({
-    client: 'pg',
-    connection: process.env.DATABASE_URL
-})
+const db = require('knex')(require('../knexfile')[process.env.NODE_ENV]);
 
 module.exports = {
-    usersTable: 'borrowers',
+    usersTable: 'users',
     booksTable: 'books',
     db
 }
