@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "migrate": "knex migrate:latest && npm run seed",
+    "seed": "knex seed:run",
+    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb bookstore && npm run migrate"
   },
   "keywords": [],
   "author": "redjanvier",
