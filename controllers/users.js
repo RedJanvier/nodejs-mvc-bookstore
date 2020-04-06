@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt');
-const validate = require('../utils/validate');
-const { db, usersTable } = require('../config/database');
+import { genSalt, hash as _hash, compareSync } from 'bcrypt';
+import validate from '../utils/validate';
+import { db, usersTable } from '../config/database';
 // REGISTER HANDLERS
-exports.render_register = (req, res, next) => res.render('register');
-exports.register = (req, res, next) => {
+export function render_register(req, res, next) { return res.render('register'); }
+export function register(req, res, next) {
     const { firstname, lastname, age, gender, email, password } = req.body;
     const fullname = `${firstname} ${lastname}`;
     const errors = validate.register(req.body);
@@ -11,8 +11,8 @@ exports.register = (req, res, next) => {
     if (errors.length){
         res.render('register', { errors, ...req.body });
     } else {
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(password, salt).then( (hash) => {
+        genSalt(10, (err, salt) => {
+            _hash(password, salt).then( (hash) => {
                 db(usersTable).insert({
                     name: fullname,
                     password: hash, 
@@ -30,11 +30,11 @@ exports.register = (req, res, next) => {
             });
         });
     }
-};
+}
 
 // LOGIN HANDLERS
-exports.render_login = (req, res, next) => res.render('Login');
-exports.login = (req, res, next) => {
+export function render_login(req, res, next) { return res.render('Login'); }
+export function login(req, res, next) {
     const errors = validate.login(req.body);
     if(errors.length){
         res.render('login', { errors, ...req.body });
@@ -47,7 +47,7 @@ exports.login = (req, res, next) => {
                     errors.push({ msg: 'Wrong Email or Password!' });
                     return res.render('login', { errors, ...req.body });
                 }
-                if (bcrypt.compareSync(password, user[0].password)){
+                if (compareSync(password, user[0].password)){
                     res.locals.user = user[0];
                     req.session.userId = user[0].id;
                     return res.redirect('/dashboard');
@@ -61,9 +61,9 @@ exports.login = (req, res, next) => {
                 res.render('login', { errors: [{ msg: 'Wrong Email or Password!'}], ...req.body });
             });
     }
-};
+}
 // LOGOUT
-exports.logout= (req, res, next) => {
+export function logout(req, res, next) {
     req.session.destroy(err => {
         if(err){
             return res.redirect('/dashboard');
@@ -71,4 +71,4 @@ exports.logout= (req, res, next) => {
         res.clearCookie('sid');
         return res.redirect('/');
     });
-};
+}

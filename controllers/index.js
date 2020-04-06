@@ -1,4 +1,4 @@
-const { db, usersTable, booksTable } = require('../config/database');
+import { db, usersTable, booksTable } from '../config/database';
 
 const dashboard = (req, res, next) => { 
     const { userId } = req.session;
@@ -65,7 +65,7 @@ const index = (req, res, next) => {
 };
 
 
-module.exports = {
+export default {
     dashboard,
     index
 };

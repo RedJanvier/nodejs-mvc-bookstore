@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import express, { json, urlencoded, static } from 'express';
+import express, { json, urlencoded } from 'express';
 import session from 'express-session';
 
 config();
@@ -28,8 +28,8 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 // ROUTES
-app.use(static('./public'));
-app.use('/', require('./routes/index'));
+app.use(express.static('./public'));
+app.use('/', require('./routes/index').default);
 app.use('/users', require('./routes/users'));
 
 app.listen(PORT, console.log(`Server started at http://localhost:${PORT}/`));

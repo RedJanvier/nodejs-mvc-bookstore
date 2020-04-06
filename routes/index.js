@@ -1,10 +1,10 @@
-const express = require('express');
-const index = require('../controllers/index');
-const { redirectDashboard, redirectLogin } = require('../config/check-auth');
+import { Router } from 'express';
+import index from '../controllers/index';
+import { redirectDashboard, redirectLogin } from '../config/check-auth';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/', redirectDashboard, index.index);
 router.get('/dashboard', redirectLogin, index.dashboard);
 
-module.exports = router;
+export default router;

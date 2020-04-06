@@ -35,7 +35,7 @@ const login = ({ email, password }) => {
     return errors;
 }
 
-module.exports = {
+export default {
     login,
     register
 };
