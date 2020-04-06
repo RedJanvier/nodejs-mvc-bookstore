@@ -1,5 +1,7 @@
+const knex = require('knex');
+const config = require('../knexfile');
 
-const db = require('knex')(require('../knexfile')[process.env.NODE_ENV]);
+const db = knex(config[process.env.NODE_ENV]);
 
 module.exports = {
     usersTable: 'users',
