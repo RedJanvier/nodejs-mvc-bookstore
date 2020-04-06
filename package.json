@@ -4,13 +4,17 @@
   "description": "A complete bookstore app inspired by Alain Niyonema where you can publish your book and sell the or even buy a book",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "start": "babel-node app",
+    "dev": "nodemon --exec babel-node app"
   },
   "keywords": [],
   "author": "redjanvier",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
     "nodemon": "^1.19.2"
   },
   "dependencies": {
