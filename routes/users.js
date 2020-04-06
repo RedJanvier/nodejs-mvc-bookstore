@@ -10,8 +10,7 @@ router.post('/register', redirectDashboard, user.register);
 // LOGIN ROUTES
 router.get('/login', redirectDashboard, user.render_login);
 router.post('/login', redirectDashboard, user.login);
-// LOGOUT 
+// LOGOUT
 router.post('/logout', redirectLogin, user.logout);
-
 
 module.exports = router;
