@@ -1,5 +1,6 @@
 # LOGIN SYSTEM BY redjanvier
 [![DeepScan grade](https://deepscan.io/api/teams/6051/projects/7919/branches/88156/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=6051&pid=7919&bid=88156)
+[![Maintainability](https://api.codeclimate.com/v1/badges/337605d4ffd06ad9890b/maintainability)](https://codeclimate.com/github/RedJanvier/nodejs-mvc-bookstore/maintainability)
 
 ## PREREQUISITES
 - NodeJs installed. (find it)[https://nodejs.org/en/]
