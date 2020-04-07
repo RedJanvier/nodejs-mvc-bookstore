@@ -1,135 +1,158 @@
-::placeholder{
-    color: rgb(100, 100, 100);
+::placeholder {
+  color: rgb(100, 100, 100);
 }
-::-webkit-input-placeholder { /* Edge */
-    color: rgb(100, 100, 100);
+::-webkit-input-placeholder {
+  /* Edge */
+  color: rgb(100, 100, 100);
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: rgb(100, 100, 100);
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(100, 100, 100);
 }
-.profile{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: rgb(125, 63, 167);
-    color: #f4f4f4;
+.profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgb(125, 63, 167);
+  color: #f4f4f4;
 }
-table{
-    position: relative;
-    top: -50px;
-    background: white;
-    border-radius: 10px;
+table {
+  position: relative;
+  top: -50px;
+  background: white;
+  border-radius: 10px;
 }
 thead {
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
 }
 #nav-mobile li:nth-child(2),
 #nav-mobile li:nth-child(2) a,
-td i{
-    cursor: not-allowed;
+td i {
+  cursor: not-allowed;
 }
-.background-img{
-    width: 100%; 
-    height: 100vh; 
-    overflow: hidden;
-    position: fixed;
+.background-img {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
 }
-.background-img img{
-    width: 100%;
+.background-img img {
+  width: 100%;
 }
 h1 {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
 }
 .register h1 {
-    margin-top: 4px;
+  margin-top: 4px;
 }
-.global .content{
-    background: #f4f4f4;
-    position: absolute; 
-    top:0; 
-    left: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    border-radius: 20px 20px 0 0;
-    padding: 20px 50px 30px 50px;
+.global .content {
+  background: #f4f4f4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  border-radius: 20px 20px 0 0;
+  padding: 20px 50px 30px 50px;
 }
-.welcome .content{ 
-    margin: 120px auto;
-    width: 100%;
-    max-width: 400px;
+.welcome .content {
+  margin: 120px auto;
+  width: 100%;
+  max-width: 400px;
 }
-.welcome a{
-    margin: 5px 0 30px 20px;
+.welcome a {
+  margin: 5px 0 30px 20px;
 }
 .books {
-    position: absolute;
-    display: grid;
-    grid-template-areas: "book book";
-    grid-gap: 1.3em;
-    background: rgba(244, 244, 244, 0.9);
-    padding: 20px;
-    top: 60px;
-    right: 0px;
-    overflow: scroll;
-    height: 85vh;
+  position: absolute;
+  display: grid;
+  grid-template-areas: 'book book';
+  grid-gap: 1.3em;
+  background: rgba(244, 244, 244, 0.9);
+  padding: 20px;
+  top: 60px;
+  right: 0px;
+  overflow: scroll;
+  height: 85vh;
 }
 .books .book {
-    grid-area: "book";
-    max-width: 400px;
+  grid-area: 'book';
+  max-width: 400px;
 }
 .errors {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    list-style: none;
-    width: 400px;
-    z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  list-style: none;
+  width: 400px;
+  z-index: 3;
 }
 .errors li {
-    padding: 10px 30px;
-    margin: 5px;
-    background: rgba(247, 48, 48, 0.9);
-    color: white;
-    width: 100%;
-    animation: shake 5s;
-    animation-fill-mode: forwards;
-    cursor: pointer;
+  padding: 10px 30px;
+  margin: 5px;
+  background: rgba(247, 48, 48, 0.9);
+  color: white;
+  width: 100%;
+  animation: shake 5s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
 }
 .errors li.success {
-    padding: 10px 30px;
-    margin: 5px;
-    background: rgba(48, 247, 48, 0.9);
-    color: white;
-    width: 100%;
-    animation: shake 5s;
-    animation-fill-mode: forwards;
-    cursor: pointer;
+  padding: 10px 30px;
+  margin: 5px;
+  background: rgba(48, 247, 48, 0.9);
+  color: white;
+  width: 100%;
+  animation: shake 5s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
 }
 @keyframes shake {
-    0% { opacity: 1; }
-    10%, 20% {transform: translate3d(-1px, 0, 0); }
-    11%, 19% { transform: translate3d(2px, 0, 0); }
-    12%, 15%, 18% { transform: translate3d(-4px, 0, 0); }
-    13%, 14% { transform: translate3d(4px, 0, 0); }
-    21% { opacity: 1;}
-    98% { opacity: 1;} 
-    100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  10%,
+  20% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  11%,
+  19% {
+    transform: translate3d(2px, 0, 0);
+  }
+  12%,
+  15%,
+  18% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  13%,
+  14% {
+    transform: translate3d(4px, 0, 0);
+  }
+  21% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-.hero{
-    background-image: url('https://thenypost.files.wordpress.com/2019/03/190316-crudele-book.jpg?quality=90&strip=all&w=618&h=410&crop=1');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: -150px;
-    height: 63vh;
-    overflow: hidden;
-    color: white;
+.hero {
+  background-image: url('https://thenypost.files.wordpress.com/2019/03/190316-crudele-book.jpg?quality=90&strip=all&w=618&h=410&crop=1');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -150px;
+  height: 63vh;
+  overflow: hidden;
+  color: white;
 }

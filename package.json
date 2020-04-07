@@ -4,14 +4,29 @@
   "description": "A complete bookstore app inspired by Alain Niyonema where you can publish your book and sell the or even buy a book",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "start": "babel-node app",
+    "dev": "nodemon --exec babel-node app",
+    "migrate": "knex migrate:latest && npm run seed",
+    "seed": "knex seed:run",
+    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb bookstore && npm run migrate"
   },
   "keywords": [],
   "author": "redjanvier",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.19.2"
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^2.0.3",
+    "prettier-eslint": "^9.0.1",
+    "prettier-eslint-cli": "^5.0.0"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
