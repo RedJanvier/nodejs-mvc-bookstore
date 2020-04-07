@@ -1,23 +1,23 @@
 import { db, usersTable, booksTable } from '../config/database';
 
 const dashboard = (req, res) => {
-  const { userId } = req.session;
-  if (userId) {
-    db(usersTable)
-      .select('email', 'age', 'gender', 'name', 'id')
-      .then((users) => res.render('dashboard', { users }))
-      .catch(console.log);
-  }
+  // const { userId } = req.session;
+  // if (userId) {
+  db(usersTable)
+    .select('email', 'age', 'gender', 'name', 'id')
+    .then((users) => res.render('dashboard', { users }))
+    .catch(console.log);
+  // }
 };
 
 const index = (req, res) => {
-  const { userId } = req.session;
-  if (userId) {
-    db(booksTable)
-      .select('title', 'summary', 'img')
-      .then((books) => res.render('welcome', { books }))
-      .catch(console.log);
-  }
+  // const { userId } = req.session;
+  // if (userId) {
+  db(booksTable)
+    .select('title', 'summary', 'img')
+    .then((books) => res.render('welcome', { books }))
+    .catch(console.log);
+  // }
   res.render('welcome', {
     books: [
       {

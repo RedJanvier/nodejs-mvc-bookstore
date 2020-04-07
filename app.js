@@ -35,3 +35,5 @@ app.use(express.static('./public'));
 app.use('/', require('./routes/index').default);
 
 app.listen(PORT, console.log(`Server started at http://localhost:${PORT}/`));
+
+export default app;

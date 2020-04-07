@@ -1,53 +1,74 @@
-    <div style="width: 100%; height: 100vh; overflow: hidden;">
-        <img style="width: 100%; height: 100%;"
-        src="https://www.incimages.com/uploaded_files/image/970x450/getty_496612468_2000138820009280460_336567.jpg" 
-        alt="login-background-image" />
-    </div>
-    <ul class="errors">
-        <% include ./partials/messages.ejs %>
-    </ul>
-    <div class="container global login grey-text text-darken-4">
-        <div class="content" 
-            style=" background: rgba( 255, 255, 255, 0.9);
-                    position: absolute; top:0; left: 0;
-                    display: flex;
-                    flex-direction: column; justify-content: center;
-                    margin-top: 50px;
-                    border-radius: 20px;
-                    padding: 50px 80px 0 30px;
-                    margin-right:100px;
-                    margin-left:100px;">
-            <h1 style="text-align: center;
-                    font-size: 35px;
-                    margin-top: 3px;">
-                Login to Store</h1>
-            <div class="action">               
-                    <div class="row">
-                        <form class="col s12" method="POST" action="/users/login">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="email" name="email" type="email" class="validate"/>
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="password" name="password" type="password" class="validate"/>
-                                    <label for="password">Password</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <button type="submit" class="btn btn-flat white-text orange">Login</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                    <div class="col s12">
-                                        Don't have an account? <a href="/users/register" class="teal-text" style="margin: 0 auto;">Register Here...</a>
-                                    </div>
-                                </div>
-                        </form>
-                    </div>    
-                </div>          
+<div style="width: 100%; height: 100vh; overflow: hidden;">
+  <img
+    style="width: 100%; height: 100%;"
+    src="https://www.incimages.com/uploaded_files/image/970x450/getty_496612468_2000138820009280460_336567.jpg"
+    alt="login-background-image"
+  />
+</div>
+<ul class="errors">
+  <% include ./partials/messages.ejs %>
+</ul>
+<div class="container global login grey-text text-darken-4">
+  <div
+    class="content"
+    style="
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 50px;
+      border-radius: 20px;
+      padding: 50px 80px 0 30px;
+      margin-right: 100px;
+      margin-left: 100px;
+    "
+  >
+    <h1 style="text-align: center; font-size: 35px; margin-top: 3px;">
+      Login to Store
+    </h1>
+    <div class="action">
+      <div class="row">
+        <form class="col s12" method="POST" action="/users/login">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" name="email" type="email" class="validate" />
+              <label for="email">Email</label>
             </div>
-        </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                class="validate"
+              />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button type="submit" class="btn btn-flat white-text orange">
+                Login
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              Don't have an account?
+              <a
+                href="/users/register"
+                class="teal-text"
+                style="margin: 0 auto;"
+                >Register Here...</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

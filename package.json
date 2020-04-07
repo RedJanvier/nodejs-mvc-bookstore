@@ -4,11 +4,14 @@
   "description": "A complete bookstore app inspired by Alain Niyonema where you can publish your book and sell the or even buy a book",
   "main": "app.js",
   "scripts": {
+    "seed": "knex seed:run",
     "start": "babel-node app",
     "dev": "nodemon --exec babel-node app",
     "migrate": "knex migrate:latest && npm run seed",
-    "seed": "knex seed:run",
-    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb bookstore && npm run migrate"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc --reporter=html --reporter=text npm run test",
+    "test": "mocha --require @babel/register '__tests__/*.test.js' --timeout 100000 --exit",
+    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb -U postgres bookstore && npm run migrate"
   },
   "keywords": [],
   "author": "redjanvier",
@@ -18,24 +21,29 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
+    "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
+    "nyc": "^15.0.1",
     "prettier": "^2.0.3",
     "prettier-eslint": "^9.0.1",
     "prettier-eslint-cli": "^5.0.0"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.16.2",
     "knex": "^0.19.5",
+    "mocha": "^7.1.1",
     "pg": "^7.12.1"
   }
 }

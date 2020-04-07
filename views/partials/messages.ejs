@@ -1,7 +1,5 @@
 <% if(typeof errors != 'undefined') { %>
-    <li><%= errors[0].msg %></li>
-<% } %>
-
-<% if(typeof success != 'undefined') { %>
-    <li class="success"><%= success[0].msg %></li>
+<li><%= errors[0].msg %></li>
+<% } %> <% if(typeof success != 'undefined') { %>
+<li class="success"><%= success[0].msg %></li>
 <% } %>
