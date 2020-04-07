@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt');
-const validate = require('../utils/validate');
-const { db, usersTable } = require('../config/database');
+import { genSalt, hash as _hash, compareSync } from 'bcrypt';
+import validate from '../utils/validate';
+import { db, usersTable } from '../config/database';
 // REGISTER HANDLERS
-exports.render_register = (req, res) => res.render('register');
-exports.register = (req, res) => {
+export const renderRegister = (req, res) => res.render('register');
+export const register = (req, res) => {
   const { firstname, lastname, age, gender, email, password } = req.body;
   const fullname = `${firstname} ${lastname}`;
   const errors = validate.register(req.body);
@@ -11,8 +11,8 @@ exports.register = (req, res) => {
   if (errors.length) {
     res.render('register', { errors, ...req.body });
   } else {
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(password, salt).then((hash) => {
+    genSalt(10, (err, salt) => {
+      _hash(password, salt).then((hash) => {
         db(usersTable)
           .insert({
             name: fullname,
@@ -39,8 +39,8 @@ exports.register = (req, res) => {
 };
 
 // LOGIN HANDLERS
-exports.render_login = (req, res) => res.render('Login');
-exports.login = (req, res) => {
+export const renderLogin = (req, res) => res.render('Login');
+export const login = (req, res) => {
   const errors = validate.login(req.body);
   if (errors.length) {
     res.render('login', { errors, ...req.body });
@@ -54,7 +54,7 @@ exports.login = (req, res) => {
           errors.push({ msg: 'Wrong Email or Password!' });
           return res.render('login', { errors, ...req.body });
         }
-        if (bcrypt.compareSync(password, user[0].password)) {
+        if (compareSync(password, user[0].password)) {
           const [usr] = user;
           res.locals.user = usr;
           req.session.userId = user[0].id;
@@ -73,7 +73,7 @@ exports.login = (req, res) => {
   }
 };
 // LOGOUT
-exports.logout = (req, res) => {
+export const logout = (req, res) =>
   req.session.destroy((err) => {
     if (err) {
       return res.redirect('/dashboard');
@@ -81,4 +81,3 @@ exports.logout = (req, res) => {
     res.clearCookie('sid');
     return res.redirect('/');
   });
-};

@@ -1,4 +1,4 @@
-exports.redirectLogin = (req, res, next) => {
+export const redirectLogin = (req, res, next) => {
   if (!req.session.userId) {
     res.redirect('/users/login');
   } else {
@@ -6,7 +6,7 @@ exports.redirectLogin = (req, res, next) => {
   }
 };
 
-exports.redirectDashboard = (req, res, next) => {
+export const redirectDashboard = (req, res, next) => {
   if (req.session.userId) {
     res.redirect('/dashboard');
   } else {
