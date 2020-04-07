@@ -1,17 +1,21 @@
-const express = require('express');
+import express from 'express';
+import * as user from '../controllers/users';
+import { redirectDashboard, redirectLogin } from '../config/check-auth';
+
 const router = express.Router();
-const user = require('../controllers/users');
-const { redirectDashboard, redirectLogin } = require('../config/check-auth');
 
 // REGISTER ROUTES
-router.get('/register', redirectDashboard, user.render_register);
-router.post('/register', redirectDashboard, user.register);
+router
+  .route('/register')
+  .get(redirectDashboard, user.renderRegister)
+  .post(redirectDashboard, user.register);
 
 // LOGIN ROUTES
-router.get('/login', redirectDashboard, user.render_login);
-router.post('/login', redirectDashboard, user.login);
-// LOGOUT 
-router.post('/logout', redirectLogin, user.logout);
+router
+  .route('/login')
+  .get(redirectDashboard, user.renderLogin)
+  .post(redirectDashboard, user.login);
+// LOGOUT
+router.route('/logout').post(redirectLogin, user.logout);
 
-
-module.exports = router;
+export default router;

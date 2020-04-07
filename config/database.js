@@ -1,11 +1,7 @@
+import knex from 'knex';
+import config from '../knexfile';
 
-const db = require('knex')({
-    client: 'pg',
-    connection: process.env.DATABASE_URL
-})
+export const db = knex(config[process.env.NODE_ENV]);
 
-module.exports = {
-    usersTable: 'borrowers',
-    booksTable: 'books',
-    db
-}
+export const usersTable = 'users';
+export const booksTable = 'books';
