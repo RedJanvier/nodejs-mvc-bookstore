@@ -4,11 +4,12 @@
   "description": "A complete bookstore app inspired by Alain Niyonema where you can publish your book and sell the or even buy a book",
   "main": "app.js",
   "scripts": {
+    "seed": "knex seed:run",
     "start": "babel-node app",
     "dev": "nodemon --exec babel-node app",
+    "test": "mocha --require @babel/register '__tests__/*.test.js' --timeout 100000 --exit",
     "migrate": "knex migrate:latest && npm run seed",
-    "seed": "knex seed:run",
-    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb bookstore && npm run migrate"
+    "reset:db": "dropdb --if-exists -U postgres bookstore && createdb -U postgres bookstore && npm run migrate"
   },
   "keywords": [],
   "author": "redjanvier",
@@ -30,12 +31,15 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.16.2",
     "knex": "^0.19.5",
+    "mocha": "^7.1.1",
     "pg": "^7.12.1"
   }
 }
