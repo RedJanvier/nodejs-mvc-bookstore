@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('This is a simple first test', () => {
-    it('should render register page', done => {
-        chai(app)
-    });
+  it('should render register page', (done) => {
+    chai(app);
+  });
 });
