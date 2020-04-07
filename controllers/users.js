@@ -57,7 +57,7 @@ export const login = (req, res) => {
         if (compareSync(password, user[0].password)) {
           const [usr] = user;
           res.locals.user = usr;
-          req.session.userId = user[0].id;
+          // req.session.userId = user[0].id;
           return res.redirect('/dashboard');
         }
         errors.push({ msg: 'Wrong Email or Password!' });
@@ -73,11 +73,11 @@ export const login = (req, res) => {
   }
 };
 // LOGOUT
-export const logout = (req, res) =>
-  req.session.destroy((err) => {
-    if (err) {
-      return res.redirect('/dashboard');
-    }
-    res.clearCookie('sid');
-    return res.redirect('/');
-  });
+export const logout = (req, res) => res.redirect('/');
+// req.session.destroy((err) => {
+//   if (err) {
+//     return res.redirect('/dashboard');
+//   }
+//   res.clearCookie('sid');
+//   return res.redirect('/');
+// });
