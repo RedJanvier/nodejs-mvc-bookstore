@@ -4,6 +4,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/337605d4ffd06ad9890b/maintainability)](https://codeclimate.com/github/RedJanvier/nodejs-mvc-bookstore/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/RedJanvier/nodejs-mvc-bookstore/badge.svg?branch=develop)](https://coveralls.io/github/RedJanvier/nodejs-mvc-bookstore?branch=develop)
 
+A lightweight nodejs based bookstore where users manage books and can sell them to other users.
+
 ## PREREQUISITES
 
 - NodeJs installed. (find it)[https://nodejs.org/en/]
@@ -21,6 +23,14 @@
 - ❌ User(logged in) should be able to create/publish a book in the store
 - ❌ User(logged in) should be able to edit/re-publish a book to the store
 - ❌ User(logged in) should be able to delete/unpublish a book from the store
+
+## Initial setup
+
+> To setup the project you must run the terminal command `npm run reset:db` and create a `.env file` in project root folder based on `.example.env`
+
+> Then install project dependecies using the command `npm install`
+
+> To start the project in development mode run `npm run dev` and in production mode `npm start`
 
 ## Routes
 
