@@ -42,7 +42,7 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.16.2",
-    "knex": "^0.19.5",
+    "knex": "^2.4.0",
     "mocha": "^7.1.1",
     "pg": "^7.12.1"
   }
